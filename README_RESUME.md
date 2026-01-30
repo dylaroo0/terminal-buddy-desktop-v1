@@ -1,168 +1,69 @@
-# 🚀 Terminal Buddy - Quick Start Summary
+# 🚀 Terminal Buddy - Desktop V1 Summary
 
-**Project:** Terminal Buddy Side Panel Style  
-**Last Session:** 2026-01-29 09:06 PST  
-**Status:** Desktop app building (Tauri/Rust wrapper)
-
----
-
-## ✅ What's Ready
-
-### Features Implemented
-
-- **Linux Shell as Default Language** (for Linux Mint 22)
-- **PowerShell Support** (Windows commands)
-- **Bash Scripting Language** (separate from Linux Shell)
-- **Custom Command Blocks** - Users can add their own commands via Custom Shop
-- **Voice Input Integration** - Built-in mic button per terminal
-- **Teaching Mode** - AI generates educational sticky notes
-- **6 Languages Total:** Linux Shell, PowerShell, Bash, Python, JavaScript, SQL
-
-### Architecture
-
-- **Frontend:** React + Vite (port 3002)
-- **Desktop:** Tauri v2 (Rust backend)
-- **AI:** Gemini 3 Pro/Flash for terminal simulation
-- **Persistence:** localStorage (all state auto-saved)
+**Project:** Terminal Buddy Side Panel
+**GitHub Repo:** [dylaroo0/terminal-buddy-desktop-v1](https://github.com/dylaroo0/terminal-buddy-desktop-v1)
+**Last Session:** 2026-01-29
+**Status:** ✅ V1 Feature Complete (Paused for next project)
 
 ---
 
-## 📂 Project Location
+## 🌟 Current State (V1.0)
+
+This application has been successfully converted from a web prototype to a **Native Linux Desktop App** with real system integration.
+
+### ✅ Features Implemented
+
+- **Real Linux Terminal:** Executes actual system commands (`ls`, `cd`, `grep`) via `bash`.
+- **Stateful Navigation:** Directory changes (`cd`) persist between commands.
+- **Auto-Logging:** Chat history is automatically saved to `~/Documents/TerminalBuddy_Logs/` for memory.
+- **Safety Timeout:** Prevents the app from freezing if an interactive command (like `top`) is run.
+- **Directory Display:** Shows current working directory (`~/Desktop`) in the UI.
+- **Voice Input:** Integrated with Gemini 2.5 Native Audio (requires system drivers).
+
+### 🐛 Troubleshooting
+
+**Microphone Access Denied (Linux):**
+If the app cannot hear you, your system is missing the GStreamer PulseAudio bridge.
+**Fix:** Run this script on your desktop:
 
 ```bash
-cd /home/dylaroo/Desktop/Antigravity_Workspace/Projects/antigravhelp/terminalBuddySidePanelstyle
+~/Desktop/FIX_AUDIO.sh
 ```
 
----
-
-## 🎯 Immediate Next Steps
-
-1. **Check Desktop App Status:**
-   - Look for a new "Terminal Buddy" window on your desktop
-   - If not visible, run:
-
-     ```bash
-     npx tauri dev
-     ```
-
-2. **Test Custom Blocks:**
-   - Click "Custom Shop" in sidebar
-   - Find "Add Command Block" section
-   - Type a command (e.g., `git status`) and press Enter
-   - See it appear as a green button in the terminal
-
-3. **Test Teaching Mode:**
-   - Toggle "Fast/Teach" switch in terminal header
-   - Run any command
-   - Yellow sticky note should appear with educational explanation
+Or manually: `sudo apt-get install gstreamer1.0-pulseaudio gstreamer1.0-plugins-good`
 
 ---
 
-## 🔧 Dependencies (Already Installed)
+## 🚀 How to Run
+
+### Option 1: Desktop Shortcut
+
+Run the script located at:
+`~/Desktop/Start_TerminalBuddy.sh`
+
+### Option 2: Command Line
 
 ```bash
-# System libraries (completed)
-sudo apt install -y libwebkit2gtk-4.1-dev build-essential curl wget file \
-  libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
-
-# Node packages (completed)
-npm install
-npm install -D @tauri-apps/cli
-```
-
----
-
-## 🐛 Known Issues
-
-1. **Simulated Terminal:** Commands are AI-simulated, not real shell execution
-   - **Fix:** Add `node-pty` or Tauri shell plugin for real commands
-
-2. **Voice Permissions:** May need to allow mic access in Tauri window
-   - Browser will prompt on first use
-
----
-
-## 📋 Key Files
-
-| File | Purpose |
-|------|---------|
-| `App.tsx` | Main application + Custom Blocks logic |
-| `types.ts` | Language configs (Linux Shell, PowerShell, etc.) |
-| `components/Terminal.tsx` | Terminal UI + voice input |
-| `src-tauri/tauri.conf.json` | Desktop app configuration |
-| `SESSION_LOG_2026-01-29_0900.md` | Full session documentation |
-
----
-
-## 🎨 User Preferences
-
-- **Accessibility:** Dyslexia support features enabled
-- **Voice Input:** High-accuracy Gemini 2.5 Flash Native Audio
-- **Default Language:** Linux Shell (for Mint 22 workflow)
-- **Learning Style:** Educational history with "go back and learn" sticky notes
-
----
-
-## 💡 Quick Commands
-
-```bash
-# Start development server (browser)
-npm run dev
-
-# Start desktop app
+cd ~/Desktop/Antigravity_Workspace/Projects/antigravhelp/terminalBuddySidePanelstyle
 npx tauri dev
-
-# Build production .deb package
-npx tauri build
-
-# View session log
-cat SESSION_LOG_2026-01-29_0900.md
 ```
 
 ---
 
-## 🔗 Related Projects
+## � Project Structure
 
-- **Main Terminal Buddy:** `/home/dylaroo/Desktop/Projects/terminal buddy`
-- **Doc-Org System:** Session logging infrastructure
-- **Voice Engine:** Voice transcription daemon
-
----
-
-## 🎯 Vision Reminder
-
-> "A multi-language, multi-modular terminal application for spectrum learners and dyslexic users"
-
-**Core Features:**
-
-- Multi-terminal grid (run 4+ languages simultaneously)
-- Educational history with highlighted notes
-- AI Co-Pilot with Fast/Teach modes
-- Voice-to-code input
-- Symbol Mode (icons instead of text)
-- Custom themes, sounds, layout
+- **`src-tauri/`**: Rust backend (permissions, file system, shell execution).
+- **`services/terminalService.ts`**: Core logic for Command Execution (Real vs Sim) and Logging.
+- **`services/logService.ts`**: Handles saving session history to markdown files.
+- **`App.tsx`**: Main UI logic.
 
 ---
 
-## 📞 When You Return
+## � Next Steps (When Resuming)
 
-**Tell me:**
-
-1. Did the desktop window launch successfully?
-2. Any errors or issues you're seeing?
-3. What feature do you want to work on next?
-
-**I can help with:**
-
-- Adding real shell execution (replace AI simulation)
-- Implementing block deletion/management
-- Exporting history to markdown
-- Building production `.deb` package
-- Testing on Windows/macOS
-- Integrating AgentScope multi-agent system
+1. **Production Build:** Run `npx tauri build` to create a `.deb` installer.
+2. **Streaming Output:** Upgrade from `cmd.execute()` to `cmd.spawn()` for real-time output (supports `top`).
+3. **Agent Integration:** Connect to local LLMs via Ollama.
 
 ---
-
-**Session Log:** `SESSION_LOG_2026-01-29_0900.md`  
-**Summary Updated:** 2026-01-29 09:06 PST  
-**Ready to continue!** 🚀
+**Signed off.** 🚀
