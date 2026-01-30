@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terminal Buddy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        /* Default Theme (Midnight) */
+        --term-bg: #1e1e2e;
+        --term-fg: #cdd6f4;
+        --accent-blue: #89b4fa;
+        --accent-green: #a6e3a1;
+        --accent-red: #f38ba8;
+        --accent-yellow: #f9e2af;
+        --accent-mauve: #cba6f7;
+        --sidebar-bg: #181825;
+        --sidebar-fg: #9399b2;
+      }
+
+      /* Custom scrollbar for better visibility */
+      ::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--sidebar-bg); 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #45475a; 
+        border-radius: 6px;
+        border: 3px solid var(--sidebar-bg);
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #585b70; 
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+              dyslexic: ['Verdana', 'sans-serif'],
+            },
+            colors: {
+              'term-bg': 'var(--term-bg)',
+              'term-fg': 'var(--term-fg)',
+              'accent-blue': 'var(--accent-blue)',
+              'accent-green': 'var(--accent-green)',
+              'accent-red': 'var(--accent-red)',
+              'accent-yellow': 'var(--accent-yellow)',
+              'accent-mauve': 'var(--accent-mauve)',
+              'sidebar-bg': 'var(--sidebar-bg)',
+              'sidebar-fg': 'var(--sidebar-fg)',
+            }
+          },
+        },
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "recharts": "https://esm.sh/recharts@^3.7.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

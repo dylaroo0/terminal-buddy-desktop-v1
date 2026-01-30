@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Terminal Buddy",
+  "description": "A multi-language, accessibility-focused terminal environment designed for spectrum and dyslexic learners, featuring AI co-pilot, color memory aids, and learning analytics.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
